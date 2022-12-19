@@ -209,7 +209,6 @@ for k in range(0,d):
 ln_modif=1
 C,D,M,Moves,pos,E=lattice_n(n,d,neighbours)
 hist_E= [np.nan]*(d*n-n-d*int(n**((d-1)/d))+2)
-#hist_E[0]=0
 hist_ln_g=[np.nan]*(d*n-n-d*int(n**((d-1)/d))+2)
 hist_E[-E]=1
 hist_ln_g[-E]=ln_modif

@@ -1,8 +1,6 @@
 import numpy as np
 import copy
 
-# In[26]:
-
 
 def replace(a,n1,n2): # replace value 1 by value 2 if exists
     b=np.copy(a)
@@ -51,9 +49,6 @@ def adjacency_from_neighbor(dic): #make adjacency matrix from neighbor list
     return adja
 
 
-# # Sierpinsky gasket
-
-# In[27]:
 
 
 def sierpinsky_make_neighbor(dic):
@@ -115,7 +110,6 @@ def gen_unmatched_sierpinsky(n):
     return dic
 
 
-# In[412]:
 
 dic_unmatched_sirpinsky11=gen_unmatched_sierpinsky(11)
 

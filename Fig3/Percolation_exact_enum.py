@@ -65,5 +65,5 @@ for r in range(1,10**4+1):
     L+=p_k
     Err+=p_k**2
     if r%10**2==0:
-      np.save('percolationlarge2/'+str(n)+'/Probabilities_n'+str(n)+', '+str(K),[L,Err])
+      np.save('percolation/'+str(n)+'/Probabilities_n'+str(n)+', '+str(K),[L,Err])
 

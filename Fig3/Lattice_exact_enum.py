@@ -34,7 +34,7 @@ def lattice_n(n,d,neighbours): #Make a walk of size n,of dimension d and having 
 def moins_un():
    return(-1)
 
-def exact_enum_pow(d,t0,t1,n):
+def exact_enum(d,t0,n):
     neighbours=np.zeros(2*d, dtype='i')
     for k in range(0,d):
       neighbours[2*k]=n**k
@@ -50,28 +50,17 @@ def exact_enum_pow(d,t0,t1,n):
     M0=M.copy()
     P=np.zeros(n)
     P[i0]=1
-    p_k=[]
-    S=0
-    for k in range(t1):
-        a=M.dot(P)
-        p0=-np.log(np.sum(a))-S
-        p1=-np.log(np.sum(M0.dot(a)))-S
-        m=M.max()
-        M=np.dot(M,M)/m**2
-        S=2*S+2*np.log(m)
-        p_k.append(p0-np.log(1-np.exp(p0-p1)))
-    p_k_2=[0]
+    p_k=[0]
     S=0
     for k in range(t0):
         P=M0.dot(P)
         m=max(P)
         P=P/m
         S+=np.log(m)
-        p_k_2.append(-np.log(np.sum(P))-S)
-    p_k_2=np.exp(-np.array(p_k_2))
-    p_k_2=p_k_2[:-1]-p_k_2[1:]
-    #p_k_2=p_k_2[:-1]-np.log(1-np.exp(p_k_2[:-1]-p_k_2[1:]))
-    return(p_k_2,p_k)
+        p_k.append(-np.log(np.sum(P))-S)
+    p_k=np.exp(-np.array(p_k))
+    p_k=p_k[:-1]-p_k[1:]
+    return(p_k)
 
 t0=10**5
 t1=0
@@ -81,7 +70,7 @@ for s in range(10**3):
       Ls,Ls2=np.zeros(t0),np.zeros(t0)
       Count=0 
       for m in range(10**2):
-        L=np.array(list(exact_enum_pow(d,t0,t1,n)[0]))  
+        L=np.array(list(exact_enum(d,t0,n)[0]))  
         Ls+=L
         Ls2+=L**2
         Count+=1

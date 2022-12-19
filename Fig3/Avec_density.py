@@ -213,7 +213,7 @@ for k in range(0,d):
       neighbours[2*k+1]=-n**k
 ln_modif=0
 C,D,M,Moves,pos,E=lattice_n(n,d,neighbours)
-hist_ln_g=np.load('ln_density/'+str(n)+'/Complete.npy',allow_pickle=True)
+hist_ln_g=np.load('ln_density/'+str(n)+'/Complete.npy',allow_pickle=True) #ln energy density obtained by the Wang Landau algorithm 
 hist_E=[0]*(d*n)
 
 
@@ -269,12 +269,12 @@ while i<5*10**9:
                 if hist_ln_g[-E]+Z>100:
                    Z=-hist_ln_g[-E]
                 else:
-                   Z=Z-np.log(1+np.exp(Z+hist_ln_g[-E])) #-hist_ln_g[-E]))
+                   Z=Z-np.log(1+np.exp(Z+hist_ln_g[-E])) 
               else:
                  P=p[:]
                  P2=2*p[:]
-                 Z=-hist_ln_g[-E] #hist_ln_g[-E]
+                 Z=-hist_ln_g[-E] 
               if K%100==0: 
                 Err=P2-2*Z
-                Err=1/2*(Err-np.log(1-np.exp(Err-2*(P-Z)))+np.log(K))-np.log(2)  
-                np.save('ln_density/'+str(n)+'/TReated.npy',[P-Z,Err])                                           
+                Err=1/2*(Err-np.log(1-np.exp(Err-2*(P-Z)))+np.log(K))-np.log(2) #Standard deviation   
+                np.save('ln_density/'+str(n)+'/Treated.npy',[P-Z,Err])                                           
