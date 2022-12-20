@@ -30,4 +30,4 @@
 
 - Sierpinski_data.zip: contains the 3 files about the visited territory of size n=100, 500 and 1000 which we use in the code Sierpinski_exact_enum.py.
 
-- DataFig3.zip: contains the distributions associated to each figure presented in Fig.3 of the main text. The left column represents the time \tau, the right column is the value of F_n(\tau). The format is *3'number of subfigure'_n'number of distinct sites visited'. The exception are the files 'ln_density3i_n*' which are the densities associated to the energy histogram/MC bias we used to obtain the figure 3i.  
+- DataFig3.zip: contains the distributions associated to each figure presented in Fig.3 of the main text. The left column represents the time \tau, the right column is the value of F_n(\tau). The format is *3'number of subfigure'_n'number of distinct sites visited'. The exception are the files 'ln_density3i_n*' which are the densities associated to the energy histogram/MC bias we used to obtain the figure 3i (left the energy, right the log energy density ln(g(E)) not normalized).  
