@@ -14,7 +14,7 @@
 
 **Data:**
 
-> One can also find the data used to plot the different subfigures in Fig. 4 of the main text in Data4.zip (the subfigure associated to the data is indicated by the small letter after the 4):
+> One can also find the data used to plot the different subfigures in Fig. 4 of the main text in DataFig4.zip (the subfigure associated to the data is indicated by the small letter after the 4):
 
 - Perim4b_n*: left column is time t, right column is the probability of having \tau_P=t. * indicates the perimeter P (50, 100, 200) 
 
