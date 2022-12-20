@@ -1,4 +1,4 @@
-**Python programs:**
+**Python programs to generate data:**
 
 - Levy_exact_enum.py: obtain the distribution of \tau_n by exact enumeration for 1d Lévy flights.
 
