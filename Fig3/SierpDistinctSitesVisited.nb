@@ -1,0 +1,181 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6087,        173]
+NotebookOptionsPosition[      5793,        160]
+NotebookOutlinePosition[      6133,        175]
+CellTagsIndexPosition[      6090,        172]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<`*\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nmax", "=", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dir", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"move", "[", "pt_", "]"}], ":=", 
+   RowBox[{"With", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", "=", 
+       RowBox[{"RandomChoice", "@", 
+        RowBox[{"Pick", "[", 
+         RowBox[{
+          RowBox[{"-", "dir"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"BitAnd", "@@", 
+             RowBox[{"(", 
+              RowBox[{"#", "+", "pt"}], ")"}]}], "&"}], "/@", 
+           RowBox[{"-", "dir"}]}], ",", "0"}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"pt", "+", "c", "+", 
+      RowBox[{"RandomChoice", "@", 
+       RowBox[{"DeleteCases", "[", 
+        RowBox[{"dir", ",", 
+         RowBox[{"-", "c"}]}], "]"}]}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"move", "[", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}], "]"}], ":=", 
+   RowBox[{"RandomChoice", "@", 
+    RowBox[{"Rest", "@", "dir"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"next", "=", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"list", "=", 
+      RowBox[{"{", "next", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"\[Tau]", "=", "0"}], ";", 
+     RowBox[{"q", "=", "1"}], ";", 
+     RowBox[{"s", "=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"q", "<", "nmax"}], ",", 
+       RowBox[{
+        RowBox[{"next", "=", 
+         RowBox[{"move", "[", "next", "]"}]}], ";", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"MemberQ", "[", 
+           RowBox[{"list", ",", "next"}], "]"}], ",", 
+          RowBox[{"s", "=", 
+           RowBox[{"s", "+", "1"}]}], ",", 
+          RowBox[{
+           RowBox[{"q", "=", 
+            RowBox[{"q", "+", "1"}]}], ";", 
+           RowBox[{
+            RowBox[{"u", "[", "q", "]"}], "=", 
+            RowBox[{"s", "+", "1"}]}], ";", 
+           RowBox[{"list", "=", 
+            RowBox[{"Union", "[", 
+             RowBox[{"list", ",", 
+              RowBox[{"{", "next", "}"}]}], "]"}]}], ";", 
+           RowBox[{"s", "=", "0"}]}]}], "]"}], ";", 
+        RowBox[{"\[Tau]", "=", 
+         RowBox[{"\[Tau]", "+", "1"}]}], ";", 
+        RowBox[{
+         RowBox[{"v", "[", "\[Tau]", "]"}], "=", "q"}]}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"voisins", "=", 
+      RowBox[{"{", 
+       RowBox[{"list", "[", 
+        RowBox[{"[", "k", "]"}], "]"}], "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "voisins", "]"}], "<", "5"}], ",", 
+       RowBox[{"voisins", "=", 
+        RowBox[{"Union", "[", 
+         RowBox[{"voisins", ",", 
+          RowBox[{"{", 
+           RowBox[{"move", "[", 
+            RowBox[{"list", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "}"}]}], "]"}]}]}], "]"}],
+      ";", 
+     RowBox[{
+      RowBox[{"vse", "[", "k", "]"}], "=", "voisins"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "2", ",", "nmax"}], "}"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fileSites", "=", 
+   RowBox[{"ToString", "[", 
+    RowBox[{"Row", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<sites.dat\>\""}], 
+      "}"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"fileSites", ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"list", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "nmax"}], "}"}]}], "]"}], ",", 
+    "\"\<Table\>\""}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.827312391060487*^9, 3.827312426480577*^9}, {
+   3.827312490430509*^9, 3.827312501237555*^9}, {3.827312531790312*^9, 
+   3.82731253262729*^9}, {3.827312757904435*^9, 3.827312758228424*^9}, 
+   3.82731279825047*^9, 3.827313543142715*^9, {3.827314173488966*^9, 
+   3.827314178109877*^9}, {3.8273143627578287`*^9, 3.827314547398136*^9}, 
+   3.8273145829702682`*^9, {3.827314615889433*^9, 3.827314616296772*^9}, 
+   3.827314649609651*^9, {3.8273146909750433`*^9, 3.827314815742341*^9}, {
+   3.827314880581429*^9, 3.827314912847354*^9}, {3.827380564013153*^9, 
+   3.827380569523357*^9}, {3.8273883146686974`*^9, 3.827388320593706*^9}, {
+   3.827388589940125*^9, 3.827388662181391*^9}, {3.827388747890585*^9, 
+   3.82738874825456*^9}, 3.8274608734300823`*^9, 3.827460928780118*^9, 
+   3.827461594553351*^9, 3.8274724716899776`*^9, {3.880534103400223*^9, 
+   3.880534108456018*^9}, {3.880534169756156*^9, 3.8805342328776197`*^9}, {
+   3.8805342979580383`*^9, 3.8805343710763607`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"9de4328b-e4da-456c-89a5-77d5738eacd1"]
+},
+WindowSize->{1654, 911},
+WindowMargins->{{Automatic, 26}, {-289, Automatic}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5231, 138, 318, "Input",ExpressionUUID->"9de4328b-e4da-456c-89a5-77d5738eacd1"]
+}
+]
+*)
+

@@ -16,6 +16,14 @@
 
 - Sierpinski_exact_enum.py: obtain the distribution of \tau_n by exact enumeration for Sierpinski gasket from data in the file Sierpinski_data which contains sets of visited sites.
 
+**Mathematica program:**
+
+-SierpDistinctSitesVisited.nb: mathematica program to generate the territory visited by a random walker on a Sierpinski gasket.
+
+**C program:**
+
+-GeneratePerc: this folder contains the C code necesary to generate the percolation clusters.
+
 **Data**
 
 - Percolation_data.zip: contains the 3 files about the visited territory of size n=100, 500 and 1000 which we use in the code Percolation_exact_enum.py.
