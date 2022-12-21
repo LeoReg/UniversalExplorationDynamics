@@ -18,7 +18,8 @@
 
 **Mathematica program:**
 
-- SierpDistinctSitesVisited.nb: mathematica program to generate the territory visited by a random walker on a Sierpinski gasket.
+- SierpDistinctSitesVisited.nb: generate the territory visited by a random walker on a Sierpinski gasket.
+- percolationRW.nb: generate the territory visited by a random walker on a percolation cluster.
 
 **C program:**
 
