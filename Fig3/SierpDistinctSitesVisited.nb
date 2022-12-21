@@ -10,14 +10,16 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6087,        173]
-NotebookOptionsPosition[      5793,        160]
-NotebookOutlinePosition[      6133,        175]
-CellTagsIndexPosition[      6090,        172]
+NotebookDataLength[      7045,        197]
+NotebookOptionsPosition[      6498,        178]
+NotebookOutlinePosition[      6838,        193]
+CellTagsIndexPosition[      6795,        190]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{
   RowBox[{"Clear", "[", "\"\<`*\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
@@ -64,66 +66,47 @@ Cell[BoxData[{
    RowBox[{"RandomChoice", "@", 
     RowBox[{"Rest", "@", "dir"}]}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Do", "[", 
+  RowBox[{"next", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"list", "=", 
+   RowBox[{"{", "next", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"time", "=", "0"}], ";", 
+  RowBox[{"q", "=", "1"}], ";", 
+  RowBox[{"s", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
    RowBox[{
+    RowBox[{"q", "<", "nmax"}], ",", 
     RowBox[{
      RowBox[{"next", "=", 
-      RowBox[{"{", 
-       RowBox[{"0", ",", "0"}], "}"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"list", "=", 
-      RowBox[{"{", "next", "}"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"\[Tau]", "=", "0"}], ";", 
-     RowBox[{"q", "=", "1"}], ";", 
-     RowBox[{"s", "=", "0"}], ";", "\[IndentingNewLine]", 
-     RowBox[{"While", "[", 
+      RowBox[{"move", "[", "next", "]"}]}], ";", 
+     RowBox[{"If", "[", 
       RowBox[{
-       RowBox[{"q", "<", "nmax"}], ",", 
+       RowBox[{"MemberQ", "[", 
+        RowBox[{"list", ",", "next"}], "]"}], ",", 
+       RowBox[{"s", "=", 
+        RowBox[{"s", "+", "1"}]}], ",", 
        RowBox[{
-        RowBox[{"next", "=", 
-         RowBox[{"move", "[", "next", "]"}]}], ";", 
-        RowBox[{"If", "[", 
-         RowBox[{
-          RowBox[{"MemberQ", "[", 
-           RowBox[{"list", ",", "next"}], "]"}], ",", 
-          RowBox[{"s", "=", 
-           RowBox[{"s", "+", "1"}]}], ",", 
-          RowBox[{
-           RowBox[{"q", "=", 
-            RowBox[{"q", "+", "1"}]}], ";", 
-           RowBox[{
-            RowBox[{"u", "[", "q", "]"}], "=", 
-            RowBox[{"s", "+", "1"}]}], ";", 
-           RowBox[{"list", "=", 
-            RowBox[{"Union", "[", 
-             RowBox[{"list", ",", 
-              RowBox[{"{", "next", "}"}]}], "]"}]}], ";", 
-           RowBox[{"s", "=", "0"}]}]}], "]"}], ";", 
-        RowBox[{"\[Tau]", "=", 
-         RowBox[{"\[Tau]", "+", "1"}]}], ";", 
+        RowBox[{"q", "=", 
+         RowBox[{"q", "+", "1"}]}], ";", 
         RowBox[{
-         RowBox[{"v", "[", "\[Tau]", "]"}], "=", "q"}]}]}], "]"}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"voisins", "=", 
-      RowBox[{"{", 
-       RowBox[{"list", "[", 
-        RowBox[{"[", "k", "]"}], "]"}], "}"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"While", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"Length", "[", "voisins", "]"}], "<", "5"}], ",", 
-       RowBox[{"voisins", "=", 
-        RowBox[{"Union", "[", 
-         RowBox[{"voisins", ",", 
-          RowBox[{"{", 
-           RowBox[{"move", "[", 
-            RowBox[{"list", "[", 
-             RowBox[{"[", "k", "]"}], "]"}], "]"}], "}"}]}], "]"}]}]}], "]"}],
-      ";", 
-     RowBox[{
-      RowBox[{"vse", "[", "k", "]"}], "=", "voisins"}]}], ",", 
-    RowBox[{"{", 
-     RowBox[{"k", ",", "2", ",", "nmax"}], "}"}]}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
+         RowBox[{"\[Tau]", "[", "q", "]"}], "=", 
+         RowBox[{"s", "+", "1"}]}], ";", 
+        RowBox[{"list", "=", 
+         RowBox[{"Union", "[", 
+          RowBox[{"list", ",", 
+           RowBox[{"{", "next", "}"}]}], "]"}]}], ";", 
+        RowBox[{"s", "=", "0"}]}]}], "]"}], ";", 
+     RowBox[{"time", "=", 
+      RowBox[{"time", "+", "1"}]}]}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<\[Tau]_\>\"", ",", " ", "nmax", ",", "\"\< = \>\"", ",", 
+   RowBox[{"\[Tau]", "[", "nmax", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<time t = \>\"", ",", "time"}], "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"fileSites", "=", 
    RowBox[{"ToString", "[", 
@@ -155,8 +138,43 @@ Cell[BoxData[{
    3.82738874825456*^9}, 3.8274608734300823`*^9, 3.827460928780118*^9, 
    3.827461594553351*^9, 3.8274724716899776`*^9, {3.880534103400223*^9, 
    3.880534108456018*^9}, {3.880534169756156*^9, 3.8805342328776197`*^9}, {
-   3.8805342979580383`*^9, 3.8805343710763607`*^9}},
- CellLabel->"In[27]:=",ExpressionUUID->"9de4328b-e4da-456c-89a5-77d5738eacd1"]
+   3.8805342979580383`*^9, 3.8805343710763607`*^9}, {3.880598089360458*^9, 
+   3.88059809269186*^9}, {3.880598126856515*^9, 3.8805981274195223`*^9}, {
+   3.880598207745742*^9, 3.8805982145773563`*^9}, 3.880598249693632*^9, {
+   3.880598279776029*^9, 3.880598348224677*^9}, {3.880598386744453*^9, 
+   3.88059856808073*^9}, {3.8805986192955236`*^9, 3.8805986765121813`*^9}, {
+   3.880598715641275*^9, 3.880598715956489*^9}, {3.880598759169194*^9, 
+   3.880598759709725*^9}, {3.880599062405363*^9, 3.880599063743853*^9}, {
+   3.8805991032560873`*^9, 3.880599113407156*^9}},
+ CellLabel->
+  "In[494]:=",ExpressionUUID->"9de4328b-e4da-456c-89a5-77d5738eacd1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\[Tau]_\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\" = \"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["\[Tau]_", 100, " = ", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.880598778970591*^9, 3.8805990643948393`*^9, 
+  3.880599114922365*^9},
+ CellLabel->
+  "During evaluation of \
+In[494]:=",ExpressionUUID->"3c9c919b-f822-4688-a84c-676a39adcc07"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"time t = \"\>", "\[InvisibleSpace]", "681"}],
+  SequenceForm["time t = ", 681],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.880598778970591*^9, 3.8805990643948393`*^9, 
+  3.880599114924049*^9},
+ CellLabel->
+  "During evaluation of \
+In[494]:=",ExpressionUUID->"128f8a0d-5775-4576-bf95-e77cee8b9c2f"]
+}, Open  ]]
+}, Open  ]]
 },
 WindowSize->{1654, 911},
 WindowMargins->{{Automatic, 26}, {-289, Automatic}},
@@ -174,8 +192,13 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 5231, 138, 318, "Input",ExpressionUUID->"9de4328b-e4da-456c-89a5-77d5738eacd1"]
+Cell[CellGroupData[{
+Cell[580, 22, 5080, 127, 283, "Input",ExpressionUUID->"9de4328b-e4da-456c-89a5-77d5738eacd1"],
+Cell[CellGroupData[{
+Cell[5685, 153, 427, 10, 24, "Print",ExpressionUUID->"3c9c919b-f822-4688-a84c-676a39adcc07"],
+Cell[6115, 165, 355, 9, 24, "Print",ExpressionUUID->"128f8a0d-5775-4576-bf95-e77cee8b9c2f"]
+}, Open  ]]
+}, Open  ]]
 }
 ]
 *)
-
